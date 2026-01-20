@@ -5,9 +5,6 @@ object-oriented programming (OOP) principles. The application supports adding,
 removing, listing books and members, borrowing and returning books, and displays
 available/borrowed books.
 
-Timeframe
---
-Planned development timeframe: 5 days
 
 Main Features
 --
@@ -86,5 +83,3 @@ Files of interest
 - LibraryManagementSystem/Classes/Member.cs
 - LibraryManagementSystem/Classes/Library.cs
 - LibraryManagementSystem/Program.cs
-
-If you want, I can refine the README further (add diagrams, more examples, or a contributor guide).
