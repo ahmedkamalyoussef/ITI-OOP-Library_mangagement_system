@@ -5,7 +5,7 @@ namespace LibraryManagementSystem
         private int ID;
         private string Title;
         private string Author;
-        private bool IsAvailable;
+        public bool IsAvailable;
 
         // Constructor to initialize a Book object
         public Book(int id, string title, string author)
@@ -16,21 +16,21 @@ namespace LibraryManagementSystem
             IsAvailable = true;
         }
         //if you needed  access to private members use this
-        public void SetAvailability(bool availability)
-        {
-            IsAvailable = availability;
-        }   
+        
         public void SetID(int id)
         {
-            ID = id;
+            if(id > 0)
+                ID = id;
         }
         public void SetTitle(string title)
         {
+            if(title != null && title.Length > 0)
             Title = title;
         }
         public void SetAuthor(string author)
         {
-            Author = author;
+            if(author != null && author.Length > 0)
+                Author = author;
         }
 
 
@@ -46,10 +46,7 @@ namespace LibraryManagementSystem
         {
             return Author;
         }
-        public bool CheckAvailability()
-        {
-            return IsAvailable;
-        }
+        
         public override string ToString()
         {
             return $"Book ID: {ID}, Title: {Title}, Author: {Author}, Available: {IsAvailable} \n";
