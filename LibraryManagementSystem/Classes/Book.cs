@@ -16,6 +16,24 @@ namespace LibraryManagementSystem
             IsAvailable = true;
         }
         //if you needed  access to private members use this
+        public void SetAvailability(bool availability)
+        {
+            IsAvailable = availability;
+        }   
+        public void SetID(int id)
+        {
+            ID = id;
+        }
+        public void SetTitle(string title)
+        {
+            Title = title;
+        }
+        public void SetAuthor(string author)
+        {
+            Author = author;
+        }
+
+
         public int GetID()
         {
             return ID;
