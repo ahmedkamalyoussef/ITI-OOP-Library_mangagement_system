@@ -23,9 +23,9 @@ public class Library
     {
         //books.Remove(book);
         Book bookToRemove = null;
-        foreach (var b in books)
+        foreach (Book b in books)
         {
-            if (b.Getid == book)
+            if (b.GetID() == book)
             {
                 bookToRemove = b;
                 break;
@@ -50,9 +50,9 @@ public class Library
     {
         //members.Remove(member);
         Member memberremoeve=null;
-        foreach (var m in members)
+        foreach (Member m in members)
         {
-            if (m.getid == member)
+            if (m.GetID() == member)
             { 
                 memberremoeve = m;
                 break;
@@ -95,7 +95,7 @@ public class Library
 
         foreach (Member m in members)
         {
-            if (m.GetId() == memberId)
+            if (m.GetID() == memberId)
             {
                 member = m;
                 break;
@@ -104,7 +104,7 @@ public class Library
 
         foreach (Book b in books)
         {
-            if (b.GetId() == bookId)
+            if (b.GetID() == bookId)
             {
                 book = b;
                 break;
@@ -141,7 +141,7 @@ public class Library
 
         foreach (Member m in members)
         {
-            if (m.GetId() == memberId)
+            if (m.GetID() == memberId)
             {
                 member = m;
                 break;
@@ -150,7 +150,7 @@ public class Library
 
         foreach (Book b in books)
         {
-            if (b.GetId() == bookId)
+            if (b.GetID() == bookId)
             {
                 book = b;
                 break;
