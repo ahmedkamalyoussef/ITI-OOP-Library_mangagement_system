@@ -85,26 +85,26 @@ Files of interest
 - LibraryManagementSystem/Program.cs
 
 -------------------------------------------------
-|                   Library                     |
--------------------------------------------------
-| - Books : List<Book>                          |
-| - Members : List<Member>                      |
--------------------------------------------------
-| + AddBook(Book)                               |
-| + RemoveBook(int)                             |
-| + AddMember(Member)                           |
-| + RemoveMember(int)                           |
-| + BorrowBook(int bookId, int memberId)        |
-| + ReturnBook(int bookId, int memberId)        |
-| + ListBooks()                                 |
-| + ListMembers()                               |
--------------------------------------------------
-        | composition (Library owns Books)
-        |
-        | 1 to many
-        v
--------------------------------------------------
-|                    Book                       |<-------
+|                   Library                     |<-------
+-------------------------------------------------       |
+| - Books : List<Book>                          |       | 
+| - Members : List<Member>                      |       |
+-------------------------------------------------       |
+| + AddBook(Book)                               |       |
+| + RemoveBook(int)                             |       |
+| + AddMember(Member)                           |       |
+| + RemoveMember(int)                           |       |
+| + BorrowBook(int bookId, int memberId)        |       |
+| + ReturnBook(int bookId, int memberId)        |       |
+| + ListBooks()                                 |       |
+| + ListMembers()                               |       |
+-------------------------------------------------       |
+        |Aggregation (Library owns Books)               |
+        |                                               |
+        | 1 to many                                     |
+        v                                               |
+-------------------------------------------------       |
+|                    Book                       |       |
 -------------------------------------------------       |
 | - Id : int                                   |        |
 | - Title : string                             |        |
@@ -115,10 +115,10 @@ Files of interest
 | + override ToString() : string               |        |
 | + CheckAvailablity()                         |        |                            
 -------------------------------------------------       |
-        | composition (Library owns Members)            |
+        ^ Assosiation (Member borrows Books)            |
         |                                               |
-        | 1 to many                                     |
-        v                                               |
+        | many to many                                  |
+        |                                               |
 -------------------------------------------------       |
 |                   Member                     |        | 
 -------------------------------------------------       |
@@ -131,7 +131,7 @@ Files of interest
 | + override ToString() : string               |        |
 -------------------------------------------------       |
         |                                               |
-        | aggregation (Member borrows Books)            |
+        | Aggregation (Library owns Members)            |
         |                                               |
         | 1 to many                                     | 
         ------------------------------------------------
