@@ -4,6 +4,169 @@ namespace LibraryManagementSystem.Classes;
 
 public class Library
 {
-    //create list of books to add in this list
-    //create list of members to add in this list
+    private List<Book> books=new List<Book>();
+    private List<Member> members=new List<Member>();
+
+    public List<Book> Getbook()
+    {
+        return books;
+    }
+    public List<Member> Getmember()
+    {
+        return members;
+    }
+    public void AddBook(Book book)
+    {
+        books.Add(book);
+    }
+    public void removeBook(Book book)
+    {
+        //books.Remove(book);
+        Book bookToRemove = null;
+        foreach (var b in books)
+        {
+            if (b.Getid == book)
+            {
+                bookToRemove = b;
+                break;
+            }
+        }
+        if (books != null)
+        {
+            books.remove(bookToRemove);
+            Console.WriteLine($"book{book.GetTitle()} removed successfully");
+
+        }
+        else
+        {
+            Console.WriteLine($"book{book.GetTitle()} not found");
+        }
+    }
+    public void AddMember(Member member)
+    {
+        members.Add(member);
+    }
+    public void removeMember(Member member)
+    {
+        //members.Remove(member);
+        Member memberremoeve=null;
+        foreach (var m in members)
+        {
+            if (m.getid == member)
+            { 
+                memberremoeve = m;
+                break;
+            }
+        }
+        if (memberremoeve != null)
+        {
+            members.Remove(memberremoeve);
+            Console.WriteLine($"member{member.GetName()} removed successfully");
+
+        }
+        else
+        {
+            Console.WriteLine($"member{member.GetName()} not found");
+        }
+    }
+    //list all books
+    public void DisplayMembers()
+    {
+        Console.WriteLine("=== Members ===");
+        foreach (Member member in members)
+        {
+            Console.WriteLine(member);
+        }
+    }
+    //list all members
+    public void DisplayMembers()
+    {
+        console.writeline("=== Members ===");
+        foreach (var m in members)
+        {
+            Console.WriteLine(books);
+        }
+    }
+    //boorrow book
+    public void BorrowBook(int memberId, int bookId)
+    {
+        Member member = null;
+        Book book = null;
+
+        foreach (Member m in members)
+        {
+            if (m.GetId() == memberId)
+            {
+                member = m;
+                break;
+            }
+        }
+
+        foreach (Book b in books)
+        {
+            if (b.GetId() == bookId)
+            {
+                book = b;
+                break;
+            }
+        }
+
+        if (member == null)
+        {
+            Console.WriteLine("Member not found.");
+            return;
+        }
+
+        if (book == null)
+        {
+            Console.WriteLine("Book not found.");
+            return;
+        }
+
+        if (!book.ISAvailable())
+        {
+            Console.WriteLine("Book is already borrowed.");
+            return;
+        }
+
+        book.IsAvailable==false;
+        member.Add(book);
+
+        Console.WriteLine($"{member.GetName()} borrowed '{book.Title}'");
+    }
+    public void ReturnBook(int memberId, int bookId)
+    {
+        Member member = null;
+        Book book = null;
+
+        foreach (Member m in members)
+        {
+            if (m.GetId() == memberId)
+            {
+                member = m;
+                break;
+            }
+        }
+
+        foreach (Book b in books)
+        {
+            if (b.GetId() == bookId)
+            {
+                book = b;
+                break;
+            }
+        }
+
+        if (member == null || book == null)
+        {
+            Console.WriteLine("Member or Book not found.");
+            return;
+        }
+
+        book.IsAvailable==true;
+        member.Remove(book);
+
+        Console.WriteLine("Book returned successfully.");
+    }
+
 }

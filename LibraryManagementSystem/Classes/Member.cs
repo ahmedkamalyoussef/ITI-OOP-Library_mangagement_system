@@ -43,7 +43,8 @@ public class Member
     }
     public void RemoveBook(Book book)
     {
-        BorrowedBooks.Remove(book);
+         BorrowedBooks.Remove(book);
+       
     }
     //if you need to see the BorrowedBooks 
 
