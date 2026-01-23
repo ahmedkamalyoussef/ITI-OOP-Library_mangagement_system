@@ -17,7 +17,16 @@ public class Library
     }
     public void AddBook(Book book)
     {
+        foreach (Book b in books)
+        {
+            if (b.GetID()==book.GetID())
+            {
+                Console.writeline($"book with ID {book.GetID()} already exists.");
+                return;
+            }
+        }
         books.Add(book);
+        Console.writeline("book is added successful.");
     }
     public void removeBook(Book book)
     {
@@ -42,18 +51,28 @@ public class Library
             Console.WriteLine($"book{book.GetTitle()} not found");
         }
     }
+
     public void AddMember(Member member)
     {
+        foreach (Member m in members)
+        {
+            if (m.GetID()==member.GetID())
+            {
+                Console.writeline($"member with ID {member.GetID()} already exists.");
+                return;
+            }
+        }
         members.Add(member);
+        Console.writeline("member is added successful.");
     }
     public void removeMember(Member member)
     {
         //members.Remove(member);
-        Member memberremoeve=null;
+        Member memberremoeve = null;
         foreach (Member m in members)
         {
             if (m.GetID() == member)
-            { 
+            {
                 memberremoeve = m;
                 break;
             }
@@ -69,6 +88,7 @@ public class Library
             Console.WriteLine($"member{member.GetName()} not found");
         }
     }
+
     //list all books
     public void DisplayMembers()
     {
@@ -82,7 +102,7 @@ public class Library
     public void DisplayMembers()
     {
         console.writeline("=== Members ===");
-        foreach (var m in members)
+        foreach (Member m in members)
         {
             Console.WriteLine(books);
         }
@@ -130,7 +150,7 @@ public class Library
         }
 
         book.IsAvailable==false;
-        member.Add(book);
+        member.AddBook(book);
 
         Console.WriteLine($"{member.GetName()} borrowed '{book.Title}'");
     }
@@ -164,7 +184,7 @@ public class Library
         }
 
         book.IsAvailable==true;
-        member.Remove(book);
+        member.RemoveBook(book);
 
         Console.WriteLine("Book returned successfully.");
     }
