@@ -34,10 +34,10 @@ public class Member
     {
         return Name;
     }
-  
+
 
     //if you needed  to add book or remove it from BorrowedBooks list
-    public void AddBook (Book book)
+    public void AddBook(Book book)
     {
         BorrowedBooks.Add(book);
     }
@@ -48,12 +48,9 @@ public class Member
     }
     //if you need to see the BorrowedBooks 
 
-    //public string ShowBorrowedBooks()
-    //{
-    //    foreach (Book book in BorrowedBooks) 
-    //    {
-    //       return book.GetTitle();
-    //    }
-    //}
+    public int ShowBorrowedBooks()
+    {
+       return BorrowedBooks.Count();
+    }
 
 }

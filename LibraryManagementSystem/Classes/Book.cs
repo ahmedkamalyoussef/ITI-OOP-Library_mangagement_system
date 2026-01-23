@@ -1,6 +1,6 @@
 namespace LibraryManagementSystem
 {
-    internal class Book
+    public class Book
     {
         private int ID;
         private string Title;
