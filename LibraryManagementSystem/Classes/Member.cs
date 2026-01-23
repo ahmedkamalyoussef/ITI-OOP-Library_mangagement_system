@@ -53,4 +53,9 @@ public class Member
        return BorrowedBooks.Count();
     }
 
+    public List<Book> GetBorrowedBooks()
+    {
+        return BorrowedBooks;
+    }
+
 }
