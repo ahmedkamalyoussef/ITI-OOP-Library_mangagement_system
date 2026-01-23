@@ -183,6 +183,12 @@ public class Library
             return;
         }
 
+        if (!member.GetBorrowedBooks().Contains(book))
+        {
+            Console.WriteLine("Member did not borrow this book.");
+            return;
+        }
+
         book.IsAvailable=true;
         member.RemoveBook(book);
 
