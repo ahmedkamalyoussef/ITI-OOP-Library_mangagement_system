@@ -131,7 +131,7 @@ while (true)
 
         case (int)Options.ListBooks:
             Console.WriteLine("Books in Library:");
-            foreach (var b in library.Getbooks())
+            foreach (Book b in library.Getbooks())
             {
                 Console.WriteLine($"ID: {b.GetID()}, Title: {b.GetTitle()}, Author: {b.GetAuthor()}, Available: {b.IsAvailable}");
             }
@@ -139,7 +139,7 @@ while (true)
 
         case (int)Options.ListMembers:
             Console.WriteLine("Library Members:");
-            foreach (var m in library.Getmember())
+            foreach (Member m in library.Getmember())
             {
                 Console.WriteLine($"ID: {m.GetID()}, Name: {m.GetName()}, Borrowed Books: {m.ShowBorrowedBooks()}");
             }
