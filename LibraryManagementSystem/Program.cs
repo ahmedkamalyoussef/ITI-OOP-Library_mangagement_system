@@ -68,7 +68,7 @@ while (true)
                 break;
             }
 
-            library.removebook(bookToRemove);
+            library.Removebook(bookToRemove);
             //Console.WriteLine($"Book '{bookToRemove.GetTitle()}' removed successfully.");
             break;
 
@@ -105,7 +105,7 @@ while (true)
                 break;
             }
 
-            library.removemember(memberToRemove);
+            library.Removemember(memberToRemove);
            // Console.WriteLine($"Member '{memberToRemove.GetName()}' removed successfully.");
             break;
 
@@ -133,7 +133,7 @@ while (true)
             Console.WriteLine("Books in Library:");
             foreach (Book b in library.Getbooks())
             {
-                Console.WriteLine($"ID: {b.GetID()}, Title: {b.GetTitle()}, Author: {b.GetAuthor()}, Available: {b.IsAvailable}");
+                Console.WriteLine($"ID: {b.GetID()}, Title: {b.GetTitle()}, Author: {b.GetAuthor()}, Available: {b._isAvailable}");
             }
             break;
 

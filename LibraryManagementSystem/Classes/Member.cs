@@ -4,59 +4,59 @@ namespace LibraryManagementSystem.Classes;
 
 public class Member
 {
-    private int ID;
-    private string Name;
-    private List<Book> BorrowedBooks = new List<Book>();
+    private int _id;
+    private string _name;
+    private List<Book> _borrowedBooks = new List<Book>();
 
-    public Member(int ID,string Name)
+    public Member(int id,string name)
     {
-        this.ID = ID;
-        this.Name = Name;
+        this._id = id;
+        this._name = name;
     }
     //if you needed  access to private members use this
 
     public void SetID(int id)
     {
-            ID = id;
+            _id = id;
     }
     public void SetName(string name)
     {
         if (name != null && name.Length > 0)
-            Name = name;
+            _name = name;
     }
   
 
     public int GetID()
     {
-        return ID;
+        return _id;
     }
     public string GetName()
     {
-        return Name;
+        return _name;
     }
 
 
     //if you needed  to add book or remove it from BorrowedBooks list
     public void AddBook(Book book)
     {
-        BorrowedBooks.Add(book);
+        _borrowedBooks.Add(book);
     }
     public void RemoveBook(Book book)
     {
-         BorrowedBooks.Remove(book);
+         _borrowedBooks.Remove(book);
        
     }
     //if you need to see the BorrowedBooks 
 
     public int ShowBorrowedBooks()
     {
-       return BorrowedBooks.Count();
+       return _borrowedBooks.Count();
     }
 
     public List<Book> GetBorrowedBooks()
     {
 
-        return BorrowedBooks;
+        return _borrowedBooks;
     }
 
 }

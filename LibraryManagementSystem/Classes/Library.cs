@@ -4,20 +4,20 @@ namespace LibraryManagementSystem.Classes;
 
 public class Library
 {
-    private List<Book> books=new List<Book>();
-    private List<Member> members=new List<Member>();
+    private List<Book> _books=new List<Book>();
+    private List<Member> _members=new List<Member>();
 
     public List<Book> Getbooks()
     {
-        return books;
+        return _books;
     }
     public List<Member> Getmember()
     {
-        return members;
+        return _members;
     }
     public void AddBook(Book book)
     {
-        foreach (Book b in books)
+        foreach (Book b in _books)
         {
             if (b.GetID()==book.GetID())
             {
@@ -25,14 +25,14 @@ public class Library
                 return;
             }
         }
-        books.Add(book);
+        _books.Add(book);
         Console.WriteLine("book is added successful.");
     }
-    public bool removebook(Book book)
+    public bool Removebook(Book book)
     {
         Book bookToRemove = null;
         Member memberToRemove = null;
-        foreach (Book b in books)
+        foreach (Book b in _books)
         {
             if (b.GetID() == book.GetID())
             {
@@ -40,7 +40,7 @@ public class Library
                 break;
             }
         }
-        foreach (Member m in members)
+        foreach (Member m in _members)
         {
             if (m.GetBorrowedBooks().Contains(bookToRemove))
             {
@@ -49,9 +49,9 @@ public class Library
             }
         }
 
-        if (bookToRemove != null && bookToRemove.IsAvailable)
+        if (bookToRemove != null && bookToRemove._isAvailable)
         {
-            books.Remove(bookToRemove);
+            _books.Remove(bookToRemove);
             Console.WriteLine($"Book '{bookToRemove.GetTitle()}' removed successfully.");
             return true;
         }
@@ -62,7 +62,7 @@ public class Library
 
     public void AddMember(Member member)
     {
-        foreach (Member m in members)
+        foreach (Member m in _members)
         {
             if (m.GetID()==member.GetID())
             {
@@ -70,14 +70,14 @@ public class Library
                 return;
             }
         }
-        members.Add(member);
+        _members.Add(member);
         Console.WriteLine("member is added successful.");
     }
-    public void removemember(Member member)
+    public void Removemember(Member member)
     {
         Member memberToRemove = null;
         Book bookToRemove = null;
-        foreach (Member m in members)
+        foreach (Member m in _members)
         {
             if (m.GetID() == member.GetID())
             {
@@ -85,7 +85,7 @@ public class Library
                 break;
             }
         }
-        foreach (Book b in books)
+        foreach (Book b in _books)
         {
             if (memberToRemove.GetBorrowedBooks().Contains(b))
             {
@@ -106,7 +106,7 @@ public class Library
             return;
         }
 
-        members.Remove(memberToRemove);
+        _members.Remove(memberToRemove);
         Console.WriteLine($"Member '{memberToRemove.GetName()}' removed successfully.");
     }
     
@@ -116,7 +116,7 @@ public class Library
         Member member = null;
         Book book = null;
 
-        foreach (Member m in members)
+        foreach (Member m in _members)
         {
             if (m.GetID() == memberId)
             {
@@ -125,7 +125,7 @@ public class Library
             }
         }
 
-        foreach (Book b in books)
+        foreach (Book b in _books)
         {
             if (b.GetID() == bookId)
             {
@@ -146,13 +146,13 @@ public class Library
             return;
         }
 
-        if (!book.IsAvailable)
+        if (!book._isAvailable)
         {
             Console.WriteLine("Book is already borrowed.");
             return;
         }
 
-        book.IsAvailable=false;
+        book._isAvailable=false;
         member.AddBook(book);
 
         Console.WriteLine($"{member.GetName()} borrowed '{book.GetTitle()}'");
@@ -162,7 +162,7 @@ public class Library
         Member member = null;
         Book book = null;
 
-        foreach (Member m in members)
+        foreach (Member m in _members)
         {
             if (m.GetID() == memberId)
             {
@@ -171,7 +171,7 @@ public class Library
             }
         }
 
-        foreach (Book b in books)
+        foreach (Book b in _books)
         {
             if (b.GetID() == bookId)
             {
@@ -192,7 +192,7 @@ public class Library
             return;
         }
 
-        book.IsAvailable=true;
+        book._isAvailable=true;
         member.RemoveBook(book);
 
         Console.WriteLine("Book returned successfully.");
