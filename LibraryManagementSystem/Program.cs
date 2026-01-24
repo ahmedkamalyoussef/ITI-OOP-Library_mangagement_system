@@ -33,7 +33,7 @@ while (true)
 
             if (library.Getbooks().Any(b => b.GetID() == bookId))
             {
-                Console.WriteLine($"Book with ID {bookId} already exists.");
+           //     Console.WriteLine($"Book with ID {bookId} already exists.");
                 continue;
             }
 
@@ -54,7 +54,7 @@ while (true)
             }
 
             library.AddBook(new Book(bookId, title, author));
-            Console.WriteLine($"Book '{title}' added successfully.");
+           // Console.WriteLine($"Book '{title}' added successfully.");
             break;
 
         case (int)Options.RemoveBook:
@@ -68,8 +68,8 @@ while (true)
                 break;
             }
 
-            library.removeBook(bookToRemove);
-            Console.WriteLine($"Book '{bookToRemove.GetTitle()}' removed successfully.");
+            library.removebook(bookToRemove);
+            //Console.WriteLine($"Book '{bookToRemove.GetTitle()}' removed successfully.");
             break;
 
         case (int)Options.AddMember:
@@ -78,7 +78,7 @@ while (true)
 
             if (library.Getmember().Any(m => m.GetID() == memberId))
             {
-                Console.WriteLine($"Member with ID {memberId} already exists.");
+               // Console.WriteLine($"Member with ID {memberId} already exists.");
                 break;
             }
 
@@ -91,7 +91,7 @@ while (true)
             }
 
             library.AddMember(new Member(memberId, name));
-            Console.WriteLine($"Member '{name}' added successfully.");
+           // Console.WriteLine($"Member '{name}' added successfully.");
             break;
 
         case (int)Options.RemoveMember:
@@ -105,8 +105,8 @@ while (true)
                 break;
             }
 
-            library.removeMember(memberToRemove);
-            Console.WriteLine($"Member '{memberToRemove.GetName()}' removed successfully.");
+            library.removemember(memberToRemove);
+           // Console.WriteLine($"Member '{memberToRemove.GetName()}' removed successfully.");
             break;
 
         case (int)Options.BorrowBook:
@@ -139,9 +139,31 @@ while (true)
 
         case (int)Options.ListMembers:
             Console.WriteLine("Library Members:");
+
             foreach (Member m in library.Getmember())
             {
-                Console.WriteLine($"ID: {m.GetID()}, Name: {m.GetName()}, Borrowed Books: {m.ShowBorrowedBooks()}");
+                List<Book> books = m.GetBorrowedBooks();
+
+                Console.Write($"ID: {m.GetID()}, Name: {m.GetName()}, ");
+
+                if (books.Count == 0)
+                {
+                    Console.WriteLine("Borrowed Books: 0");
+                }
+                else
+                {
+                    Console.Write($"Borrowed Books: {books.Count} (");
+
+                    for (int i = 0; i < books.Count; i++)
+                    {
+                        Console.Write(books[i].GetTitle());
+
+                        if (i < books.Count - 1)
+                            Console.Write(", ");
+                    }
+
+                    Console.WriteLine(")");
+                }
             }
             break;
 
