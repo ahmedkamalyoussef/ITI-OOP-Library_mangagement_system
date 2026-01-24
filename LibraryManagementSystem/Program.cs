@@ -33,15 +33,28 @@ while (true)
 
             if (library.Getbooks().Any(b => b.GetID() == bookId))
             {
-                Console.WriteLine($"Book with ID {bookId} already exists.");
+           //     Console.WriteLine($"Book with ID {bookId} already exists.");
                 continue;
             }
 
-            string title = ReadString("Enter Title: ");
-            string author = ReadString("Enter Author: ");
+            Console.Write("Enter Title: ");
+            string? title = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(title))
+            {
+                Console.WriteLine("Title cannot be empty.");
+                break;
+            }
+
+            Console.Write("Enter Author: ");
+            string? author = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(author))
+            {
+                Console.WriteLine("Author cannot be empty.");
+                break;
+            }
 
             library.AddBook(new Book(bookId, title, author));
-            // Console.WriteLine($"Book '{title}' added successfully.");
+           // Console.WriteLine($"Book '{title}' added successfully.");
             break;
 
         case (int)Options.RemoveBook:
@@ -55,7 +68,7 @@ while (true)
                 break;
             }
 
-            library.removebook(bookToRemove);
+            library.Removebook(bookToRemove);
             //Console.WriteLine($"Book '{bookToRemove.GetTitle()}' removed successfully.");
             break;
 
@@ -65,14 +78,20 @@ while (true)
 
             if (library.Getmember().Any(m => m.GetID() == memberId))
             {
-                Console.WriteLine($"Member with ID {memberId} already exists.");
+               // Console.WriteLine($"Member with ID {memberId} already exists.");
                 break;
             }
 
-            string name = ReadString("Enter Name: ");
+            Console.Write("Enter Name: ");
+            string? name = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                Console.WriteLine("Name cannot be empty.");
+                break;
+            }
 
             library.AddMember(new Member(memberId, name));
-            // Console.WriteLine($"Member '{name}' added successfully.");
+           // Console.WriteLine($"Member '{name}' added successfully.");
             break;
 
         case (int)Options.RemoveMember:
@@ -86,8 +105,8 @@ while (true)
                 break;
             }
 
-            library.removemember(memberToRemove);
-            // Console.WriteLine($"Member '{memberToRemove.GetName()}' removed successfully.");
+            library.Removemember(memberToRemove);
+           // Console.WriteLine($"Member '{memberToRemove.GetName()}' removed successfully.");
             break;
 
         case (int)Options.BorrowBook:
@@ -114,7 +133,7 @@ while (true)
             Console.WriteLine("Books in Library:");
             foreach (Book b in library.Getbooks())
             {
-                Console.WriteLine($"ID: {b.GetID()}, Title: {b.GetTitle()}, Author: {b.GetAuthor()}, Available: {b.IsAvailable}");
+                Console.WriteLine($"ID: {b.GetID()}, Title: {b.GetTitle()}, Author: {b.GetAuthor()}, Available: {b._isAvailable}");
             }
             break;
 
@@ -157,6 +176,10 @@ while (true)
     }
 }
 
+
+
+
+
 static int ReadInt(string prompt)
 {
     while (true)
@@ -178,19 +201,19 @@ static int ReadInt(string prompt)
     }
 }
 
-static string ReadString(string prompt)
-{
-    while (true)
-    {
-        Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.Write(prompt);
-        Console.ResetColor();
-        string? input = Console.ReadLine();
-        if (!string.IsNullOrWhiteSpace(input))
-            return input.Trim();
 
-        Console.ForegroundColor = ConsoleColor.DarkRed;
-        Console.WriteLine("Invalid input. Enter a non-empty string.");
-        Console.ResetColor();
-    }
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
